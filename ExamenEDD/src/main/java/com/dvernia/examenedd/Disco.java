@@ -1,7 +1,7 @@
 package com.dvernia.examenedd;
 
-
 import java.util.*;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Class Disco
@@ -76,13 +76,16 @@ public class Disco {
      * @return booleano. Devuelve false si el valor de los minutos no está entre
      * 0 y 59
      */
-    public boolean setMinutos(int min) {
-        if (min >= 0 && min <= 59) {
-            minutos = min;
-            return true;
-        } else {
-            return false;
+    public boolean setMinutos(String min) {
+
+        if (StringUtils.isNumeric(min) && (min.length() > 0 && min.length() < 2)) {
+            final int minInt = Integer.parseInt(min);
+            if (minInt >= 0 && minInt <= 59) {
+                minutos = minInt;
+                return true;
+            }
         }
+        return false;
     }
 
     /**
@@ -101,13 +104,15 @@ public class Disco {
      * @return booleano. Devuelve false si el valor de los minutos no está entre
      * 0 y 59
      */
-    public boolean setSegundos(int sec) {
-        if (sec >= 0 && sec <= 59) {
-            segundos = sec;
-            return true;
-        } else {
-            return false;
+    public boolean setSegundos(String sec) {
+        if (StringUtils.isNumeric(sec) && (sec.length() > 0 && sec.length() < 2)) {
+            final int secInt = Integer.parseInt(sec);
+            if (secInt >= 0 && secInt <= 59) {
+                segundos = secInt;
+                return true;
+            }
         }
+        return false;
     }
 
     /**
